@@ -3,7 +3,9 @@
     <title>Home</title>
 @endsection
 @section('content')
-<h1>Comics: {{ count($comics) }}</h1>
+<h1>Comics: {{ count($comics) }} </h1>
+<a href="{{ route('users.create') }}">Create</a>
+
 <div>
 @foreach ($comics as $comic)
 <a href="{{ route('users.show', $comic -> id) }}">
