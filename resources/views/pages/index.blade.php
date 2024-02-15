@@ -4,8 +4,9 @@
 @endsection
 @section('content')
 <h1>Comics: {{ count($comics) }} </h1>
-<a href="{{ route('users.create') }}">Create</a>
-
+<button><a href="{{ route('users.create') }}">Create</a></button>
+<br>
+<br>
 <div>
 @foreach ($comics as $comic)
 <a href="{{ route('users.show', $comic -> id) }}">
