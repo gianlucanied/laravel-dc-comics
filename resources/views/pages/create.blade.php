@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 <h1>New Comic</h1>
-<form action="{{route('users.store')}}"
+<form action="{{route('comics.store')}}"
 method="POST">
 
 @csrf
