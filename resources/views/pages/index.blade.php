@@ -12,6 +12,7 @@
 <a href="{{ route('comics.show', $comic -> id) }}">
     <h5>{{ $comic -> title }}</h5>
     </a>
+    <a class="mx-3" href="{{ route('comics.edit', $comic -> id) }}">EDIT</a>
     <form action="{{ route('comics.destroy', $comic -> id) }}"
     method="POST">
 
