@@ -12,6 +12,13 @@
 <a href="{{ route('comics.show', $comic -> id) }}">
     <h5>{{ $comic -> title }}</h5>
     </a>
+    <form action="{{ route('comics.destroy', $comic -> id) }}"
+    method="POST">
+
+    @csrf
+    @method('DELETE')
+        <input type="submit" value="X">
+    </form>
 @endforeach
 </div>
 @endsection
