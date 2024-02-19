@@ -5,9 +5,9 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-use App\Models\Comic;
+use App\Models\Fumetto;
 
-class ComicTableSeeder extends Seeder
+class FumettoTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,6 +16,6 @@ class ComicTableSeeder extends Seeder
      */
     public function run()
     {
-        Comic :: factory() -> count(10) -> create();
+        Fumetto :: factory() -> count(10) -> create();
     }
 }

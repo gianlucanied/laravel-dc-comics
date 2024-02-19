@@ -3,17 +3,17 @@
     <title>Home</title>
 @endsection
 @section('content')
-<h1>Comics: {{ count($comics) }} </h1>
-<button><a href="{{ route('comics.create') }}">Create</a></button>
+<h1>Comics: {{ count($fumettos) }} </h1>
+<button><a href="{{ route('fumettos.create') }}">Create</a></button>
 <br>
 <br>
 <div>
-@foreach ($comics as $comic)
-<a href="{{ route('comics.show', $comic -> id) }}">
-    <h5>{{ $comic -> title }}</h5>
+@foreach ($fumettos as $fumetto)
+<a href="{{ route('fumettos.show', $fumetto -> id) }}">
+    <h5>{{ $fumetto -> title }}</h5>
     </a>
-    <a class="mx-3" href="{{ route('comics.edit', $comic -> id) }}">EDIT</a>
-    <form action="{{ route('comics.destroy', $comic -> id) }}"
+    <a class="mx-3" href="{{ route('fumettos.edit', $fumetto -> id) }}">EDIT</a>
+    <form action="{{ route('fumettos.destroy', $fumetto -> id) }}"
     method="POST">
 
     @csrf

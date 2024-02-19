@@ -2,21 +2,21 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\ComicController;
+use App\Http\Controllers\FumettoController;
 
-Route :: get('/', [ComicController :: class, 'index' ]) -> name('comics.index');
+Route :: get('/fumettos', [FumettoController :: class, 'index' ]) -> name('fumettos.index');
 
-Route :: get('/comics/create', [ComicController :: class, 'create' ]) -> name('comics.create');
+Route :: get('/fumettos/create', [FumettoController :: class, 'create' ]) -> name('fumettos.create');
 
-Route :: post('/comics', [ComicController :: class, 'store']) -> name('comics.store');
+Route :: post('/fumettos', [FumettoController :: class, 'store']) -> name('fumettos.store');
 
-Route :: get('/comics/{id}', [ComicController :: class, 'show' ]) -> name('comics.show');
+Route :: get('/fumettos/{id}', [FumettoController :: class, 'show' ]) -> name('fumettos.show');
 
-Route :: delete('/comics/{id}', [ComicController :: class, 'destroy'])
-->name('comics.destroy');
+Route :: delete('/fumettos/{id}', [FumettoController :: class, 'destroy'])
+->name('fumettos.destroy');
 
-Route :: get('/comics/{id}/edit', [ComicController :: class, 'edit'])
--> name ('comics.edit');
+Route :: get('/fumettos/{id}/edit', [FumettoController :: class, 'edit'])
+-> name ('fumettos.edit');
 
-Route :: put('/comics/{id}', [ComicController :: class, 'update'])
--> name('comics.update');
+Route :: put('/fumettos/{id}', [FumettoController :: class, 'update'])
+-> name('fumettos.update');
