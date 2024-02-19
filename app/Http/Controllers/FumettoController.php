@@ -88,7 +88,18 @@ class FumettoController extends Controller
     {
         $fumetto = Fumetto :: find($id);
 
-        $data = $request -> all();
+        // $data = $request -> all();
+
+        $data = $request -> validate([
+            'title' => 'required|string|min:3|max:255',
+            'publishing_house' => 'required|string|min:3|max:255',
+            'price' => 'required|numeric',
+        ],
+        [
+            'title.min' => "Il titolo deve avere almeno 3 caratteri",
+            'publishing_house.min' => "La Casa Editrice deve contenere almeno 3 caratteri",
+            'price.numeric' => "Il prezzo può contenere solo numeri"
+        ]);
 
         $fumetto -> title = $data['title'];
         $fumetto -> publishing_house = $data['publishing_house'];
