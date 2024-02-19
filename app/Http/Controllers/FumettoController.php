@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\Fumetto;
 
+use App\Http\Requests\FumettoFormRequest;
+
 class FumettoController extends Controller
 {
     /**
@@ -84,21 +86,21 @@ class FumettoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(FumettoFormRequest $request, $id)
     {
         $fumetto = Fumetto :: find($id);
 
-        // $data = $request -> all();
+        $data = $request -> all();
 
         $data = $request -> validate([
-            'title' => 'required|string|min:3|max:255',
-            'publishing_house' => 'required|string|min:3|max:255',
-            'price' => 'required|numeric',
+            // 'title' => 'required|string|min:3|max:255',
+            // 'publishing_house' => 'required|string|min:3|max:255',
+            // 'price' => 'required|numeric',
         ],
         [
-            'title.min' => "Il titolo deve avere almeno 3 caratteri",
-            'publishing_house.min' => "La Casa Editrice deve contenere almeno 3 caratteri",
-            'price.numeric' => "Il prezzo può contenere solo numeri"
+            // 'title.min' => "Il titolo deve avere almeno 3 caratteri",
+            // 'publishing_house.min' => "La Casa Editrice deve contenere almeno 3 caratteri",
+            // 'price.numeric' => "Il prezzo può contenere solo numeri"
         ]);
 
         $fumetto -> title = $data['title'];
