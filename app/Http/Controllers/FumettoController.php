@@ -38,7 +38,7 @@ class FumettoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FumettoFormRequest $request)
     {
         $data = $request -> all();
 
@@ -90,18 +90,11 @@ class FumettoController extends Controller
     {
         $fumetto = Fumetto :: find($id);
 
-        $data = $request -> all();
+        // $data = $request -> all();
 
-        $data = $request -> validate([
-            // 'title' => 'required|string|min:3|max:255',
-            // 'publishing_house' => 'required|string|min:3|max:255',
-            // 'price' => 'required|numeric',
-        ],
-        [
-            // 'title.min' => "Il titolo deve avere almeno 3 caratteri",
-            // 'publishing_house.min' => "La Casa Editrice deve contenere almeno 3 caratteri",
-            // 'price.numeric' => "Il prezzo può contenere solo numeri"
-        ]);
+        $data = $request -> validate(
+            $this -> getValidationRules(),
+            $this -> getValidationMessages());
 
         $fumetto -> title = $data['title'];
         $fumetto -> publishing_house = $data['publishing_house'];
@@ -124,5 +117,23 @@ class FumettoController extends Controller
         $fumetto -> delete();
 
         return redirect() -> route('fumettos.index');
+    }
+
+    private function getValidationRules() {
+        return
+        ['title' => 'required|string|min:3|max:255',
+        'publishing_house' => 'required|string|min:3|max:255',
+        'price' => 'required|numeric'];
+    }
+
+    private function getValidationMessages() {
+        return [
+            'title.required' => "Il titolo è richiesto",
+            'publishing_house.required' => "La casa editrice è richiesta",
+            'price.required' => "Il prezzo è richiesto",
+            'title.min' => "Il titolo deve avere almeno 3 caratteri",
+            'publishing_house.min' => "La Casa Editrice deve contenere almeno 3 caratteri",
+            'price.numeric' => "Il prezzo può contenere solo numeri"
+        ];
     }
 }
